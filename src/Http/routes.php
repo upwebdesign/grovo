@@ -1,3 +1,3 @@
 <?php
 
-Route::controller('grovo', 'Upwebdesign\Grovo\Http\Controllers\GrovoController');
+// Route::controller('api/grovo', 'Upwebdesign\Grovo\Http\Controllers\GrovoController');
