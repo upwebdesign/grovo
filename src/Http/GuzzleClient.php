@@ -2,6 +2,8 @@
 
 namespace Upwebdesign\Grovo\Http
 
+use Upwebdesign\Grovo\GrovoException;
+use Upwebdesign\Grovo\HtppException;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 

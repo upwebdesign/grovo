@@ -23,7 +23,7 @@ class User extends GuzzleClient
     public function get($id=null)
     {
         if (is_null($id) || ! is_numeric($id)) {
-            throw new HttpException('User ID for this request is invalid!');
+            throw new HttpException('User ID for this request is invalid!', 1);
         }
         return $this->request(sprintf('%s/%s', $endpoint, $id));
     }
@@ -36,7 +36,7 @@ class User extends GuzzleClient
     public function create($data=[])
     {
         if (empty($data) || ! is_array($data)) {
-            throw new HttpException('You must supply user information to create a user!');
+            throw new HttpException('You must supply user information to create a user!', 1);
         }
         $data['data'] = [
             'type' => 'users',
@@ -53,7 +53,7 @@ class User extends GuzzleClient
     public function update($id, $data=[])
     {
         if (empty($data) || ! is_array($data)) {
-            throw new HttpException('You must supply user information to create a user!');
+            throw new HttpException('You must supply user information to create a user!', 1);
         }
         $data['data'] = [
             'type' => 'users',
@@ -70,7 +70,7 @@ class User extends GuzzleClient
     public function delete($id=null)
     {
         if (is_null($id) || ! is_numeric($id)) {
-            throw new HttpException('User ID for this request is invalid!');
+            throw new HttpException('User ID for this request is invalid!', 1);
         }
         return $this->method('DELETE')->request(sprintf('%s/%s', $endpoint, $id));
     }

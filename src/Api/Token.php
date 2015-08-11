@@ -31,7 +31,11 @@ class Token extends GuzzleClient
         $data = config('grovo');
         $data['token'] = $response['access_token'];
         $data = var_export($data, 1);
-        File::put(app_path() . '/config/grovo.php', "<?php\n return $data ;");
+        try {
+            File::put(app_path() . '/config/grovo.php', "<?php\n return $data ;");
+        } catch (Exception $e) {
+            throw new GrovoException("Failed to store token in grovo.config file!", 1);
+        }
         return $data['token'];
     }
 
