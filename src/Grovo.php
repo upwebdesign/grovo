@@ -8,7 +8,6 @@ use Upwebdesign\Grovo\Api\User;
 /**
 * Grovo documentation
 * http://docs.grovo.apiary.io
-* $grovo->user()->get($id);
 */
 class Grovo
 {
