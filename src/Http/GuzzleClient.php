@@ -17,6 +17,12 @@ class GuzzleClient
     protected $api = 'http://api.grovo.com';
 
     /**
+     * [$version description]
+     * @var string
+     */
+    protected $version = '1.0';
+
+    /**
      * [$client_id description]
      * @var string
      */
@@ -68,7 +74,7 @@ class GuzzleClient
     {
         $url = sprintf('%s/%s', $this->api, $uri);
         $headers = [
-            'API-version' => '1.0',
+            'API-version' => $this->version,
             'Content-Type' => 'application/json'
         ]
         $auth = ! empty($this->token) ? ['Authorization' => sprintf('Bearer %s', $this->token)] : []

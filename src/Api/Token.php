@@ -23,7 +23,7 @@ class Token extends GuzzleClient
      */
     public function __construct()
     {
-        if (empty(config('token'))) {
+        if (empty(config('grovo.token'))) {
             return $this->request($endpoint, [
                 'client_id' => $this->client_id,
                 'client_secret' => $this->client_secret,
