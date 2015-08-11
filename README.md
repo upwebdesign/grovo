@@ -6,6 +6,9 @@ The first time you run a Grovo request, the grovo.config file will contain the t
 `env('GROVO_TOKEN')`
 
 `$grovo->user()->get($id);`
+
 `$grovo->user()->create([]]);`
+
 `$grovo->user()->update([]]);`
+
 `$grovo->user()->delete($id);`
