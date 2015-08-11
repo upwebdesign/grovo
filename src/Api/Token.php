@@ -15,21 +15,24 @@ class Token extends GuzzleClient
      */
     private $endpoint = 'token';
 
-    // To update the config file with new token
-    // File::put(app_path() . '/config/customization.php', "<?php\n return $data ;")
-
     /**
      * [__construct description]
      */
     public function __construct()
     {
-        if (empty(config('grovo.token'))) {
-            return $this->request($endpoint, [
-                'client_id' => $this->client_id,
-                'client_secret' => $this->client_secret,
-                'grant_type' => 'client_credentials'
-            ]);
+        if ( ! is_null($token = config('grovo.token', null))) {
+            return $token;
         }
+        $response = $this->request($endpoint, [
+            'client_id' => $this->client_id,
+            'client_secret' => $this->client_secret,
+            'grant_type' => 'client_credentials'
+        ]);
+        $data = config('grovo');
+        $data['token'] = $response['access_token'];
+        $data = var_export($data, 1);
+        File::put(app_path() . '/config/grovo.php', "<?php\n return $data ;");
+        return $data['token'];
     }
 
 }

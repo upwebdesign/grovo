@@ -83,7 +83,11 @@ class GuzzleClient
             $client = new Client();
             $request = $client->createRequest($this->method, $url, $headers, $body);
             $response = $request->send();
-            return $response->json();
+            $data = $response->json();
+            if (isset($data['errors'])) {
+                $error = $errors[1];
+                throw new HttpException(sprintf('code: %s :: %s', $error['code'], $error['title']));
+            }
         } catch (ClientErrorResponseException $e) {
             throw new HttpException($e);
         }
