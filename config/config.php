@@ -1,3 +1,7 @@
 <?php
 
-return [];
+return [
+    'client_id' => '',
+    'client_secret' => '',
+    'token' => ''
+];
