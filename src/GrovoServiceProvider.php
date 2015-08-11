@@ -26,8 +26,9 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $configPath = __DIR__ . '/../config/config.php';
-        $this->publishes([$configPath => config_path('grovo.php')], 'config');
+        $this->publishes([
+            __DIR__.'/../config/config.php' => config_path('grovo.php')
+        ], 'config');
 
         include sprintf('%s/Http/routes.php', __DIR__);
     }
