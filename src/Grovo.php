@@ -1,5 +1,13 @@
 <?php namespace Upwebdesign\Grovo;
 
+/**
+ * This file is part of Upwebdesign\Grovo,
+ * a Laravel package to integrate with Grovo
+ *
+ * @license MIT
+ * @package Upwebdesign\Grovo
+ */
+
 use Upwebdesign\Grovo\GrovoException;
 use Upwebdesign\Grovo\Api\User;
 

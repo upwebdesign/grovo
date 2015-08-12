@@ -1,5 +1,13 @@
 <?php namespace Upwebdesign\Grovo\Api;
 
+/**
+ * This file is part of Upwebdesign\Grovo,
+ * a Laravel package to integrate with Grovo
+ *
+ * @license MIT
+ * @package Upwebdesign\Grovo
+ */
+
 use Upwebdesign\Grovo\Http\GuzzleClient;
 use Upwebdesign\Grovo\GrovoException;
 use Upwebdesign\Grovo\Http\HttpException;
