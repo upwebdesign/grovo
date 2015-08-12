@@ -1,9 +1,8 @@
-<?php
-
-namespace Upwebdesign\Grovo;
+<?php namespace Upwebdesign\Grovo;
 
 use Upwebdesign\Grovo\GrovoException;
 use Upwebdesign\Grovo\Api\User;
+use Upwebdesign\Grovo\Api\Token;
 
 /**
 * Grovo documentation
@@ -19,6 +18,16 @@ class Grovo
     public function user(User $user)
     {
         return $user;
+    }
+
+    /**
+     * [token description]
+     * @param  Token  $token [description]
+     * @return [type]        [description]
+     */
+    public function token(Token $token)
+    {
+        return $token;
     }
 
 }

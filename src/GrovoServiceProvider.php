@@ -1,6 +1,12 @@
-<?php
+<?php namespace Upwebdesign\Grovo;
 
-namespace Upwebdesign\Grovo;
+/**
+ * This file is part of Upwebdesign\Grovo,
+ * a Laravel package to integrate with Grovo
+ *
+ * @license MIT
+ * @package Upwebdesign\Grovo
+ */
 
 use \Illuminate\Support\ServiceProvider;
 
@@ -18,6 +24,10 @@ class GrovoServiceProvider extends ServiceProvider
         $this->app->bind('grovo', function($app) {
             return new Grovo;
         });
+
+        $this->app->bindShared('grovo:token', function ($app) {
+            return new Console\Commands\RequestToken();
+        });
     }
 
     /**
@@ -26,10 +36,23 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Publish config files
         $this->publishes([
             __DIR__.'/../config/config.php' => config_path('grovo.php')
         ], 'config');
 
-        include sprintf('%s/Http/routes.php', __DIR__);
+        // Register Commands
+        $this->commands('grovo:token');
+    }
+
+    /**
+     * [provides description]
+     * @return [type] [description]
+     */
+    public function provides()
+    {
+        return [
+            'grovo:token'
+        ];
     }
 }

@@ -1,9 +1,16 @@
-<?php
+<?php namespace Upwebdesign\Grovo\Http;
 
-namespace Upwebdesign\Grovo\Http
+/**
+ * This file is part of Upwebdesign\Grovo,
+ * a Laravel package to integrate with Grovo
+ *
+ * @license MIT
+ * @package Upwebdesign\Grovo
+ */
 
+use Upwebdesign\Grovo\Api\Token;
 use Upwebdesign\Grovo\GrovoException;
-use Upwebdesign\Grovo\HtppException;
+use Upwebdesign\Grovo\Http\HttpException;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 
@@ -16,31 +23,31 @@ class GuzzleClient
      * [$api description]
      * @var string
      */
-    protected $api = 'http://api.grovo.com';
+    private $api;
 
     /**
      * [$version description]
      * @var string
      */
-    protected $version = '1.0';
+    private $version;
 
     /**
      * [$client_id description]
      * @var string
      */
-    protected $client_id = '';
+    private $client_id;
 
     /**
      * [$client_secret description]
      * @var string
      */
-    protected $client_secret = '';
+    private $client_secret;
 
     /**
      * [$token description]
-     * @var [type]
+     * @var string
      */
-    private $token;
+    protected $token;
 
     /**
      * [$method description]
@@ -50,27 +57,34 @@ class GuzzleClient
 
     /**
      * [$debug description]
-     * @var [type]
+     * @var boolean
      */
     protected $debug;
 
     /**
-     * [__construct description]
-     * @param Token $token [description]
+     * [$endpoint description]
+     * @var string
      */
-    public function __construct(Token $token)
+    protected $endpoint;
+
+    /**
+     * [__construct description]
+     */
+    public function __construct()
     {
+        $this->api = config('grovo.api', 'http://api.grovo.com');
+        $this->version = config('grovo.version', '1.0');
         $this->client_id = config('grovo.client_id');
         $this->client_secret = config('grovo.client_secret');
-        $this->token = $token;
+        $this->token = config('grovo.token');
+        $this->debug = config('grovo.debug');
     }
 
     /**
      * [request description]
-     * @param  [type] $uri              [description]
-     * @param  [type] $args             [description]
-     * @param  array  $endpoint_headers [description]
-     * @return [type]                   [description]
+     * @param  [type] $uri  [description]
+     * @param  [type] $args [description]
+     * @return [type]       [description]
      */
     public function request($uri, $args=null)
     {
@@ -78,8 +92,8 @@ class GuzzleClient
         $headers = [
             'API-version' => $this->version,
             'Content-Type' => 'application/json'
-        ]
-        $auth = ! empty($this->token) ? ['Authorization' => sprintf('Bearer %s', $this->token)] : []
+        ];
+        $auth = ! empty($this->token) ? ['Authorization' => sprintf('Bearer %s', $this->token)] : [];
         $headers = array_merge($headers, $auth);
         try {
             $client = new Client();
@@ -104,5 +118,14 @@ class GuzzleClient
     {
         $this->method = $method;
         return $this;
+    }
+
+    /**
+     * [getToken description]
+     * @return [type] [description]
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 }
