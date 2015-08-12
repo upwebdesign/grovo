@@ -8,7 +8,7 @@
  * @package Upwebdesign\Grovo
  */
 
-use \Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 /**
 *
@@ -36,11 +36,7 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Publish config files
-        $this->publishes([
-            __DIR__.'/../config/config.php' => config_path('grovo.php')
-        ], 'config');
-
+        $this->package('upwebdesign/grovo', 'grovo');
         // Register Commands
         $this->commands('grovo:token');
     }
