@@ -1,6 +1,4 @@
-<?php
-
-namespace Upwebdesign\Grovo\Http;
+<?php namespace Upwebdesign\Grovo\Http;
 
 use Upwebdesign\Grovo\GrovoException;
 

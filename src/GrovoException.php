@@ -1,5 +1,3 @@
-<?php
-
-namespace Upwebdesign\Grovo;
+<?php namespace Upwebdesign\Grovo;
 
 class GrovoException extends \Exception {}
