@@ -2,7 +2,6 @@
 
 use Upwebdesign\Grovo\GrovoException;
 use Upwebdesign\Grovo\Api\User;
-use Upwebdesign\Grovo\Api\Token;
 
 /**
 * Grovo documentation
@@ -11,23 +10,22 @@ use Upwebdesign\Grovo\Api\Token;
 class Grovo
 {
     /**
+     * [$user description]
+     * @var object
+     */
+    private $user = null;
+
+    /**
      * [user description]
      * @param  User   $user [description]
      * @return [type]       [description]
      */
-    public function user(User $user)
+    public function user()
     {
-        return $user;
-    }
-
-    /**
-     * [token description]
-     * @param  Token  $token [description]
-     * @return [type]        [description]
-     */
-    public function token(Token $token)
-    {
-        return $token;
+        if (is_null($this->user)) {
+            return new User;
+        }
+        return $this->user;
     }
 
 }
