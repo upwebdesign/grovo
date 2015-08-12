@@ -1,8 +1,8 @@
-<?php
-
-namespace Upwebdesign\Grovo\Api
+<?php namespace Upwebdesign\Grovo\Api;
 
 use Upwebdesign\Grovo\Http\GuzzleClient;
+use Upwebdesign\Grovo\GrovoException;
+use Upwebdesign\Grovo\Http\HttpException;
 
 /**
 *
@@ -13,7 +13,7 @@ class User extends GuzzleClient
      * [$endpoint description]
      * @var string
      */
-    private $endpoint = 'users';
+    protected $endpoint = 'users';
 
     /**
      * [get description]
@@ -25,7 +25,8 @@ class User extends GuzzleClient
         if (is_null($id) || ! is_numeric($id)) {
             throw new HttpException('User ID for this request is invalid!', 1);
         }
-        return $this->request(sprintf('%s/%s', $endpoint, $id));
+        return 'test';
+        // return $this->request(sprintf('%s/%s', $endpoint, $id));
     }
 
     /**
@@ -41,7 +42,7 @@ class User extends GuzzleClient
         $data['data'] = [
             'type' => 'users',
             'attributes' => $data
-        ]
+        ];
         return $this->request($endpoint, $data);
     }
 
@@ -58,7 +59,7 @@ class User extends GuzzleClient
         $data['data'] = [
             'type' => 'users',
             'attributes' => $data
-        ]
+        ];
         return $this->method('PATCH')->request(sprintf('%s/%s', $endpoint, $id), $data);
     }
 
