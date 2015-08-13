@@ -102,27 +102,30 @@ $grovo->user()->get($id);
 Creat User
 ```php
 $grovo->user()->create([
-  "email": "jimmys@grovo.com",
-  "first_name": "Jon",
-  "last_name": "Sales",
-  "groups": [
-    "Engineering",
-    "Platform",
-    "API"
+  'email': 'jimmys@grovo.com',
+  'first_name': 'Jon',
+  'last_name': 'Sales',
+  'groups': [
+    'Engineering',
+    'Platform',
+    'API'
   ],
-  "office_location": "New York",
-  "department": "Engineering",
-  "job_title": "Senior Engineer",
-  "employee_id": 8,
-  "employment_type": "fulltime",
-  "hire_date": "2014-11-17 22:36:59",
-  "status": "active"
+  'office_location': 'New York',
+  'department': 'Engineering',
+  'job_title': 'Senior Engineer',
+  'employee_id': 8,
+  'employment_type': 'fulltime',
+  'hire_date': '2014-11-17 22:36:59',
+  'status': 'active'
 ]]);
 ```
 
 Update User
 ```php
-$grovo->user()->update([]]);
+$grovo->user()->update([
+  'first_name': 'Feddy',
+  'groups': 'Architecture'
+]]);
 ```
 
 Delete User
