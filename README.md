@@ -117,7 +117,7 @@ $grovo->user()->create([
   'employment_type': 'fulltime',
   'hire_date': '2014-11-17 22:36:59',
   'status': 'active'
-]]);
+]);
 ```
 
 Update User
@@ -125,7 +125,7 @@ Update User
 $grovo->user()->update($id, [
   'first_name': 'Feddy',
   'groups': 'Architecture'
-]]);
+]);
 ```
 
 Delete User
