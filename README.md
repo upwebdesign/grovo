@@ -93,6 +93,16 @@ So, we have our Grovo API Token and are ready to start making requests.
 
 In case of an error a exception, `HttpException`, will be thrown and can be caught.
 
+```php
+use Upwebdesign\Grovo\Grovo
+```
+
+Type-hint
+
+```php
+public function method(Grovo $grovo)
+```
+
 Get User
 
 ```php
@@ -131,4 +141,23 @@ $grovo->user()->update($id, [
 Delete User
 ```php
 $grovo->user()->delete($id);
+```
+
+A full example
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Upwebdesign\Grovo\Grovo
+
+class UserController extends Controller
+{
+    public function show(Grovo $grovo)
+    {
+        $user = $grovo->user()->get(1);
+        return view('user.show', compact('user'));
+    }
+}
 ```
