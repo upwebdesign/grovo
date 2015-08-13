@@ -122,7 +122,7 @@ $grovo->user()->create([
 
 Update User
 ```php
-$grovo->user()->update([
+$grovo->user()->update($id, [
   'first_name': 'Feddy',
   'groups': 'Architecture'
 ]]);
