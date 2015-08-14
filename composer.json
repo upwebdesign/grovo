@@ -9,6 +9,9 @@
         }
     ],
     "autoload": {
+        "classmap": {
+            "commands"
+        },
         "psr-4": {
             "Upwebdesign\\Grovo\\": "src/"
         }
