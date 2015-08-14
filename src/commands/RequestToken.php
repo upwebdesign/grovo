@@ -1,4 +1,4 @@
-<?php namespace Upwebdesign\Grovo\Console\Commands;
+<?php namespace Upwebdesign\Grovo;
 
 /**
  * This file is part of Upwebdesign\Grovo,
@@ -19,7 +19,7 @@ class RequestToken extends Command
      *
      * @var string
      */
-    protected $signature = 'grovo:requestToken';
+    protected $name = 'grovo:requestToken';
 
     /**
      * The console command description.
@@ -33,8 +33,9 @@ class RequestToken extends Command
      *
      * @return mixed
      */
-    public function handle(Token $token)
+    public function fire()
     {
+        $token = new Token;
         $this->comment('The config/grovo.php config file has been updated with new token:');
         $this->comment(sprintf('Token: %s', $token->getToken()));
     }

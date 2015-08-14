@@ -11,8 +11,9 @@
 use Upwebdesign\Grovo\Api\Token;
 use Upwebdesign\Grovo\GrovoException;
 use Upwebdesign\Grovo\Http\HttpException;
-use Guzzle\Http\Client;
-use Guzzle\Http\Exception\ClientErrorResponseException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use Config;
 
 /**
 *
@@ -35,13 +36,13 @@ class GuzzleClient
      * [$client_id description]
      * @var string
      */
-    private $client_id;
+    protected $client_id;
 
     /**
      * [$client_secret description]
      * @var string
      */
-    private $client_secret;
+    protected $client_secret;
 
     /**
      * [$token description]
@@ -72,12 +73,12 @@ class GuzzleClient
      */
     public function __construct()
     {
-        $this->api = Config::get('grovo.api', 'http://api.grovo.com');
-        $this->version = Config::get('grovo.version', '1.0');
-        $this->client_id = Config::get('grovo.client_id');
-        $this->client_secret = Config::get('grovo.client_secret');
-        $this->token = Config::get('grovo.token');
-        $this->debug = Config::get('grovo.debug');
+        $this->api = Config::get('grovo::api', 'http://api.grovo.com');
+        $this->version = Config::get('grovo::version', '1.0');
+        $this->client_id = Config::get('grovo::client_id');
+        $this->client_secret = Config::get('grovo::client_secret');
+        $this->token = Config::get('grovo::token');
+        $this->debug = Config::get('grovo::debug');
     }
 
     /**
@@ -88,7 +89,8 @@ class GuzzleClient
      */
     public function request($uri, $args=null)
     {
-        $url = sprintf('%s/%s', $this->api, $uri);
+        dd($this->version);
+        dd(Config::get('grovo::version'));
         $headers = [
             'API-version' => $this->version,
             'Content-Type' => 'application/json'
@@ -96,15 +98,18 @@ class GuzzleClient
         $auth = ! empty($this->token) ? ['Authorization' => sprintf('Bearer %s', $this->token)] : [];
         $headers = array_merge($headers, $auth);
         try {
-            $client = new Client();
-            $request = $client->createRequest($this->method, $url, $headers, $body);
-            $response = $request->send();
+            $client = new Client(['base_uri' => $this->api]);
+            $response = $client->get($uri, [
+                'headers' => $headers,
+                'body' => $args
+            ]);
+            // $response = $request->send();
             $data = $response->json();
             if (isset($data['errors'])) {
                 $error = $errors[1];
                 throw new HttpException(sprintf('code: %s :: %s', $error['code'], $error['title']));
             }
-        } catch (ClientErrorResponseException $e) {
+        } catch (ClientException $e) {
             throw new HttpException($e);
         }
     }

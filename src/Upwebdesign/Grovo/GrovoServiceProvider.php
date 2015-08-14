@@ -25,8 +25,8 @@ class GrovoServiceProvider extends ServiceProvider
             return new Grovo;
         });
 
-        $this->app->bindShared('grovo:token', function ($app) {
-            return new Console\Commands\RequestToken();
+        $this->app->bindShared('grovo:requestToken', function ($app) {
+            return new RequestToken();
         });
     }
 
@@ -37,8 +37,9 @@ class GrovoServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->package('upwebdesign/grovo', 'grovo');
+        // $this->package('upwebdesign/grovo', 'grovo', __DIR__.'/../');
         // Register Commands
-        $this->commands('grovo:token');
+        $this->commands('grovo:requestToken');
     }
 
     /**
@@ -47,8 +48,8 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [
-            'grovo:token'
-        ];
+        // return [
+        //     'grovo:requestToken'
+        // ];
     }
 }

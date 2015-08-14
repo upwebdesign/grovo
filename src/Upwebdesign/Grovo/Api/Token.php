@@ -29,7 +29,7 @@ class Token extends GuzzleClient
      */
     public function __construct()
     {
-        $response = $this->request($endpoint, [
+        $response = $this->request($this->endpoint, [
             'client_id' => $this->client_id,
             'client_secret' => $this->client_secret,
             'grant_type' => 'client_credentials'

@@ -1,4 +1,4 @@
 # Grovo
-Laravel 4.1 Grovo API Service Provider
+Laravel 4.2 Grovo API Service Provider
 
-Docs coming soon
+        $ php artisan config:publish upwebdesign\grovo`
