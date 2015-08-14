@@ -72,12 +72,12 @@ class GuzzleClient
      */
     public function __construct()
     {
-        $this->api = config('grovo.api', 'http://api.grovo.com');
-        $this->version = config('grovo.version', '1.0');
-        $this->client_id = config('grovo.client_id');
-        $this->client_secret = config('grovo.client_secret');
-        $this->token = config('grovo.token');
-        $this->debug = config('grovo.debug');
+        $this->api = Config::get('grovo.api', 'http://api.grovo.com');
+        $this->version = Config::get('grovo.version', '1.0');
+        $this->client_id = Config::get('grovo.client_id');
+        $this->client_secret = Config::get('grovo.client_secret');
+        $this->token = Config::get('grovo.token');
+        $this->debug = Config::get('grovo.debug');
     }
 
     /**
