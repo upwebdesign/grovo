@@ -8,18 +8,22 @@
             "email": "jvista@upwebdesign.com"
         }
     ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.1.*",
+        "upwebdesign/grovo-php": "dev-master"
+    },
     "autoload": {
-        "classmap": {
+        "classmap": [
             "commands"
-        },
+        ],
         "psr-4": {
             "Upwebdesign\\Grovo\\": "src/"
         }
     },
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "5.1.*",
-        "guzzlehttp/guzzle": "~6.0"
-    }
+    "repositories": [ {
+        "type": "vcs",
+        "url": "https://github.com/upwebdesign/grovo-php"
+    }],
+    "minimum-stability": "dev"
 }
