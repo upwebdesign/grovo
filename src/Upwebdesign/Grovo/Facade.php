@@ -1,4 +1,4 @@
-<?php namespace Upwebdesign\Lob;
+<?php namespace Upwebdesign\Grovo;
 
 /**
  * This file is part of Upwebdesign\Grovo,
