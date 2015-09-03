@@ -45,11 +45,11 @@ class GrovoServiceProvider extends ServiceProvider
             $client_id = $this->app['config']->get('grovo::client_id');
             $client_secret = $this->app['config']->get('grovo::client_secret');
             $debug = $this->app['config']->get('grovo::debug');
-            $access_token = ! Cache::has('access_token') ?: Cache::get('access_token');
+            $access_token = ! Cache::has('grovo:access_token') ?: Cache::get('grovo:access_token');
             $api = new GrovoApi($client_id, $client_secret, $access_token, function($new_token) {
                 // Global cache!!!
                 $expiresAt = Carbon::now()->addDay();
-                Cache::put('access_token', $new_token, $expiresAt);
+                Cache::put('grovo:access_token', $new_token, $expiresAt);
             });
             // If not debugging set to live api and auth URLs
             if ( ! $debug) {
