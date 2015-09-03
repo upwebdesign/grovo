@@ -1,6 +1,6 @@
 {
     "name": "upwebdesign/grovo",
-    "description": "Laravel 5.1 Grovo API Service Provider",
+    "description": "Grovo API Service Provider",
     "license": "MIT",
     "authors": [
         {
@@ -20,10 +20,6 @@
         "psr-4": {
             "Upwebdesign\\Grovo\\": "src/"
         }
-    },
-    "repositories": [ {
-        "type": "vcs",
-        "url": "https://github.com/upwebdesign/grovo-php"
-    }],
+    }
     "minimum-stability": "dev"
 }
