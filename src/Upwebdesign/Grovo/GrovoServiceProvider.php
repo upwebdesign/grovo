@@ -47,7 +47,8 @@ class GrovoServiceProvider extends ServiceProvider
             $access_token = ! Cache::has('access_token') ?: Cache::get('access_token');
             $api = new GrovoApi($client_id, $client_secret, $access_token, function($new_token) {
                 // Global cache!!!
-                Cache::put('access_token', $new_token);
+                $expiresAt = Carbon::now()->addDay();
+                Cache::put('access_token', $new_token, $expiresAt);
             });
             // If not debugging set to live api and auth URLs
             if ( ! $debug) {

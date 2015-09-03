@@ -51,7 +51,7 @@ Don't forget to dump composer autoload
 
 Publish the grovo.config file
 
-    $ php artisan config:publish upwebdesign\grovo
+    $ php artisan config:publish upwebdesign/grovo
 
 In order to make requests to Grovo, we need to obtain an API Token. You can do so by running:
 
