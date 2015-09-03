@@ -10,19 +10,20 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "~4.0|5.0.*@dev",
-        "guzzlehttp/guzzle": "~6.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "mockery/mockery": "~0.9",
-        "illuminate/database": "~4.0|5.0.*@dev",
-        "symfony/process": "~2.3"
+        "illuminate/support": "5.1.*",
+        "upwebdesign/grovo-php": "dev-master"
     },
     "autoload": {
+        "classmap": [
+            "commands"
+        ],
         "psr-4": {
             "Upwebdesign\\Grovo\\": "src/"
         }
     },
+    "repositories": [ {
+        "type": "vcs",
+        "url": "https://github.com/upwebdesign/grovo-php"
+    }],
     "minimum-stability": "dev"
 }
