@@ -21,7 +21,7 @@
         "symfony/process": "~2.3"
     },
     "autoload": {
-        "psr-4": {
+        "psr-0": {
             "Upwebdesign\\Grovo\\": "src/"
         }
     },
