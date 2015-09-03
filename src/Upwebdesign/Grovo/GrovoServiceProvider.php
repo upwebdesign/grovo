@@ -9,11 +9,12 @@
  */
 
 use Illuminate\Support\ServiceProvider;
+use Grovo\Api\Client\GrovoApi;
+use Cache;
 
 /**
-* When publishing via packages/upwebdesign/grovo/src
-* php artisan config:publish upwebdesign/grovo --path=app/packages/upwebdesign/grovo/src/config
-*/
+ *
+ */
 class GrovoServiceProvider extends ServiceProvider
 {
     /**
@@ -29,10 +30,7 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // dd($this->guessPackagePath());
         $this->package('upwebdesign/grovo', 'grovo');
-        // Register Commands
-        $this->commands('grovo:requestToken');
     }
 
     /**
@@ -42,11 +40,21 @@ class GrovoServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('grovo', function() {
-            return new Grovo;
-        });
-
-        $this->app->bindShared('grovo:requestToken', function ($app) {
-            return new RequestToken();
+            // return new Grovo;
+            $client_id = $this->app['config']->get('grovo::client_id');
+            $client_secret = $this->app['config']->get('grovo::client_secret');
+            $debug = $this->app['config']->get('grovo::debug');
+            $access_token = ! Cache::has('access_token') ?: Cache::get('access_token');
+            $api = new GrovoApi($client_id, $client_secret, $access_token, function($new_token) {
+                // Global cache!!!
+                Cache::put('access_token', $new_token);
+            });
+            // If not debugging set to live api and auth URLs
+            if ( ! $debug) {
+                $api->setApiUrl('https://api.grovo.com');
+                $api->setAuthUrl('https://auth.grovo.com');
+            }
+            return $api;
         });
     }
 

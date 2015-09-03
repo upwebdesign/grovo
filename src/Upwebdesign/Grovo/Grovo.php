@@ -9,7 +9,8 @@
  */
 
 use Upwebdesign\Grovo\GrovoException;
-use Upwebdesign\Grovo\Api\User;
+// use Upwebdesign\Grovo\Api\User;
+use Grovo\Api\Client\GrovoApi;
 
 /**
 * Grovo documentation
@@ -22,6 +23,12 @@ class Grovo
      * @var object
      */
     private $user = null;
+
+    // public function __construct()
+    // {
+    //     $client_id = $this->app['config']->get('grovo::client_id')
+    //     return Grovo\Api\Client\GrovoApi($clientId, $clientSecret, $accessToken);
+    // }
 
     /**
      * [user description]
