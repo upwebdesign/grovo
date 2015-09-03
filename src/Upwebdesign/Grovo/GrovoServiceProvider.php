@@ -39,7 +39,7 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('GrovoApi', function() {
+        $this->app->singleton('grovo', function() {
             // return new Grovo;
             $client_id = $this->app['config']->get('grovo::client_id');
             $client_secret = $this->app['config']->get('grovo::client_secret');
