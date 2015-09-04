@@ -9,10 +9,10 @@
  */
 
 use Illuminate\Support\ServiceProvider;
-// use Grovo\Api\Client\GrovoApi;
-use Upwebdesign\Grovo\Grovo;
-// use Carbon\Carbon;
-// use Cache;
+use Grovo\Api\Client\GrovoApi;
+// use Upwebdesign\Grovo\Grovo;
+use Carbon\Carbon;
+use Cache;
 
 /**
  *
