@@ -45,7 +45,7 @@ class GrovoServiceProvider extends ServiceProvider
         $app = $this->app;
 
         // Used with Facade
-        $app->singleton('grovo', function() {
+        $app->singleton('grovo', function() use($app) {
             $client_id = $app['config']->get('grovo::client_id');
             $client_secret = $app['config']->get('grovo::client_secret');
             $debug = $app['config']->get('grovo::debug');
