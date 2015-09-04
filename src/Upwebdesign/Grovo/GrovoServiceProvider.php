@@ -1,4 +1,6 @@
-<?php namespace Upwebdesign\Grovo;
+<?php
+
+namespace Upwebdesign\Grovo;
 
 /**
  * This file is part of Upwebdesign\Grovo,
@@ -10,7 +12,6 @@
 
 use Illuminate\Support\ServiceProvider;
 use Grovo\Api\Client\GrovoApi;
-// use Upwebdesign\Grovo\Grovo;
 use Carbon\Carbon;
 use Cache;
 
@@ -43,19 +44,11 @@ class GrovoServiceProvider extends ServiceProvider
     {
         $app = $this->app;
 
-        // $this->app->bind('Grovo', function() {
-        //     return new Grovo(
-        //         $app['config']->get('grovo::client_id'),
-        //         $app['config']->get('grovo::client_secret'),
-        //         $app['config']->get('grovo::debug')
-        //     );
-        // });
-
         // Used with Facade
-        $this->app->singleton('grovo', function() {
-            $client_id = $this->app['config']->get('grovo::client_id');
-            $client_secret = $this->app['config']->get('grovo::client_secret');
-            $debug = $this->app['config']->get('grovo::debug');
+        $app->singleton('grovo', function() {
+            $client_id = $app['config']->get('grovo::client_id');
+            $client_secret = $app['config']->get('grovo::client_secret');
+            $debug = $app['config']->get('grovo::debug');
             $access_token = ! Cache::has('grovo:access_token') ?: Cache::get('grovo:access_token');
             $api = new GrovoApi($client_id, $client_secret, $access_token, function($new_token) {
                 // Global cache!!!
@@ -78,8 +71,7 @@ class GrovoServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'grovo',
-            // 'Grovo'
+            'grovo'
         ];
     }
 }
