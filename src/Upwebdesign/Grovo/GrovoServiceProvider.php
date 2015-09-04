@@ -43,13 +43,13 @@ class GrovoServiceProvider extends ServiceProvider
     {
         $app = $this->app;
 
-        $this->app->bind('Grovo', function() {
-            return new Grovo(
-                $app['config']->get('grovo::client_id'),
-                $app['config']->get('grovo::client_secret'),
-                $app['config']->get('grovo::debug')
-            );
-        });
+        // $this->app->bind('Grovo', function() {
+        //     return new Grovo(
+        //         $app['config']->get('grovo::client_id'),
+        //         $app['config']->get('grovo::client_secret'),
+        //         $app['config']->get('grovo::debug')
+        //     );
+        // });
 
         // Used with Facade
         $this->app->singleton('grovo', function() {
@@ -79,7 +79,7 @@ class GrovoServiceProvider extends ServiceProvider
     {
         return [
             'grovo',
-            'Grovo'
+            // 'Grovo'
         ];
     }
 }
