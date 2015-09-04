@@ -9,9 +9,10 @@
  */
 
 use Illuminate\Support\ServiceProvider;
-use Grovo\Api\Client\GrovoApi;
-use Carbon\Carbon;
-use Cache;
+// use Grovo\Api\Client\GrovoApi;
+use Upwebdesign\Grovo\Grovo;
+// use Carbon\Carbon;
+// use Cache;
 
 /**
  *
@@ -40,8 +41,18 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $app = $this->app;
+
+        $this->app->bind('Grovo', function() {
+            return new Grovo(
+                $app['config']->get('grovo::client_id'),
+                $app['config']->get('grovo::client_secret'),
+                $app['config']->get('grovo::debug')
+            );
+        });
+
+        // Used with Facade
         $this->app->singleton('grovo', function() {
-            // return new Grovo;
             $client_id = $this->app['config']->get('grovo::client_id');
             $client_secret = $this->app['config']->get('grovo::client_secret');
             $debug = $this->app['config']->get('grovo::debug');
@@ -67,7 +78,8 @@ class GrovoServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'grovo'
+            'grovo',
+            'Grovo'
         ];
     }
 }
