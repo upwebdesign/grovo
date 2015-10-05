@@ -16,6 +16,7 @@ use Cache;
 
 /**
 * Grovo documentation
+* https://grovo-api.readme.io/v1.0/docs
 * http://docs.grovo.apiary.io
 */
 class Grovo
