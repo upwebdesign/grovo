@@ -35,7 +35,8 @@ class Grovo
         // If not debugging set to live api and auth URLs
         if ( ! $debug) {
             $this->instance->setApiUrl('https://api.grovo.com');
-            $this->instance->setAuthUrl('https://auth.grovo.com');
+            $this->instance->setAuthUrl('https://api.grovo.com');
+            // $this->instance->setAuthUrl('https://auth.grovo.com');
         }
     }
 
