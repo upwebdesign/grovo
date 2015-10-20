@@ -58,7 +58,8 @@ class GrovoServiceProvider extends ServiceProvider
             // If not debugging set to live api and auth URLs
             if ( ! $debug) {
                 $api->setApiUrl('https://api.grovo.com');
-                $api->setAuthUrl('https://auth.grovo.com');
+                $api->setAuthUrl('https://api.grovo.com');
+                // $api->setAuthUrl('https://auth.grovo.com');
             }
             return $api;
         });
