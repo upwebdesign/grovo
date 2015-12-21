@@ -18,7 +18,7 @@
             "commands"
         ],
         "psr-4": {
-            "Upwebdesign\\Grovo\\": "src/"
+            "Upwebdesign\\Grovo\\": "src/Grovo"
         }
     }
     "minimum-stability": "dev"
