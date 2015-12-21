@@ -14,12 +14,13 @@
         "upwebdesign/grovo-php": "dev-master"
     },
     "autoload": {
-        "classmap": [
-            "commands"
-        ],
         "psr-4": {
-            "Upwebdesign\\Grovo\\": "src/Grovo"
+            "Upwebdesign\\Grovo\\": "src/"
         }
-    }
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/upwebdesign/grovo-php"
+    }],
     "minimum-stability": "dev"
 }
