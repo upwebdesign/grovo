@@ -16,7 +16,7 @@ use Upwebdesign\Grovo\Http\HttpException;
 /**
  * This is ready for testing
  */
-class Token extends GuzzleClient
+class Token extends Client
 {
     /**
      * [$endpoint description]
