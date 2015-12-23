@@ -19,7 +19,7 @@ use Cache;
 * https://grovo-api.readme.io/v1.0/docs
 * http://docs.grovo.apiary.io
 */
-class Grovo extends GrovoApi
+class Grovo
 {
     private $instance;
 
