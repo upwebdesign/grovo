@@ -26,8 +26,7 @@ class GrovoServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('Upwebdesign\Grovo\Grovo', function($app){
-            $grovo = new Grovo;
-            return $grovo->getInstance();
+            return new Grovo;
         });
 
         $this->app->bindShared('grovo:token', function ($app) {
