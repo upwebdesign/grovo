@@ -8,10 +8,10 @@
  * @package Upwebdesign\Grovo
  */
 
-use Upwebdesign\Grovo\Http\GuzzleClient;
-use Upwebdesign\Grovo\GrovoException;
-use Upwebdesign\Grovo\Http\HttpException;
 use Storage;
+use Upwebdesign\Grovo\GrovoException;
+use Upwebdesign\Grovo\Http\GuzzleClient;
+use Upwebdesign\Grovo\Http\HttpException;
 
 /**
  * This is ready for testing
@@ -30,8 +30,8 @@ class Token extends GuzzleClient
     public function __construct()
     {
         $response = $this->request($this->endpoint, [
-            'client_id' => $this->client_id,
-            'client_secret' => $this->client_secret,
+            'client_id' => config('grovo.client_id'),
+            'client_secret' => config('grovo.client_secret'),
             'grant_type' => 'client_credentials'
         ]);
         $config = config('grovo');
