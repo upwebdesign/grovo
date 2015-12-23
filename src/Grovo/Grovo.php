@@ -48,4 +48,9 @@ class Grovo
     {
         return $this->instance;
     }
+
+    public function user()
+    {
+        return $this->instance->user();
+    }
 }
