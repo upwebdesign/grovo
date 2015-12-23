@@ -9,8 +9,8 @@
  */
 
 use Storage;
+use GuzzleHttp\Client;
 use Upwebdesign\Grovo\GrovoException;
-use Upwebdesign\Grovo\Http\GuzzleClient;
 use Upwebdesign\Grovo\Http\HttpException;
 
 /**
