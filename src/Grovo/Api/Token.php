@@ -1,4 +1,10 @@
-<?php namespace Upwebdesign\Grovo\Api;
+<?php
+
+/**
+ * This file is no longer being used and will be removed when necessary
+ */
+
+namespace Upwebdesign\Grovo\Api;
 
 /**
  * This file is part of Upwebdesign\Grovo,
