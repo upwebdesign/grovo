@@ -1,4 +1,6 @@
-<?php namespace Upwebdesign\Grovo\Api;
+<?php
+
+namespace Upwebdesign\Grovo\Api;
 
 /**
  * This file is part of Upwebdesign\Grovo,
@@ -8,6 +10,7 @@
  * @package Upwebdesign\Grovo
  */
 use Upwebdesign\Grovo\GrovoException;
+use Upwebdesign\Grovo\Traits\Response as GrovoResponse;
 use Upwebdesign\Grovo\Http\HttpException;
 
 /**
@@ -15,6 +18,8 @@ use Upwebdesign\Grovo\Http\HttpException;
 */
 class User
 {
+    use GrovoResponse;
+
     /**
      * @var string
      */
@@ -42,7 +47,7 @@ class User
         if (is_null($page) || ! is_numeric($page)) {
             throw new GrovoException('Please provide a page number!', 1);
         }
-        return $this->api->getUsers($page);
+        return $this->handleResponse($this->api->getUsers($page));
     }
 
     /**
@@ -54,7 +59,7 @@ class User
         if (is_null($id)) {
             throw new GrovoException('User ID for this request is invalid!', 1);
         }
-        return $this->api->showUser($id);
+        return $this->handleResponse($this->api->showUser($id));
     }
 
     /**
