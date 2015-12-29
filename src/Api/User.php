@@ -54,7 +54,7 @@ class User
         if (is_null($id)) {
             throw new GrovoException('User ID for this request is invalid!', 1);
         }
-        $this->api->showUser($id);
+        return $this->api->showUser($id);
     }
 
     /**
