@@ -39,19 +39,19 @@ class User
      */
     public function all($page=1)
     {
-        if (is_null($id) || ! is_numeric($id)) {
-            throw new GrovoException('User ID for this request is invalid!', 1);
+        if (is_null($page) || ! is_numeric($page)) {
+            throw new GrovoException('Please provide a page number!', 1);
         }
         return $this->api->getUsers($page);
     }
 
     /**
-     * @param  integer $id
+     * @param  string $id
      * @return array
      */
     public function get($id=null)
     {
-        if (is_null($id) || ! is_numeric($id)) {
+        if (is_null($id)) {
             throw new GrovoException('User ID for this request is invalid!', 1);
         }
         $this->api->showUser($id);
