@@ -11,7 +11,6 @@ namespace Upwebdesign\Grovo\Api;
  */
 use Upwebdesign\Grovo\GrovoException;
 use Upwebdesign\Grovo\Traits\Response as GrovoResponse;
-use Upwebdesign\Grovo\Http\HttpException;
 
 /**
 *
@@ -19,11 +18,6 @@ use Upwebdesign\Grovo\Http\HttpException;
 class User
 {
     use GrovoResponse;
-
-    /**
-     * @var string
-     */
-    protected $endpoint = 'users';
 
     /**
      * @var object

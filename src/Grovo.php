@@ -10,6 +10,7 @@ namespace Upwebdesign\Grovo;
  * @package Upwebdesign\Grovo
  */
 use Upwebdesign\Grovo\GrovoException;
+use Upwebdesign\Grovo\Api\Assignment;
 use Upwebdesign\Grovo\Api\User;
 use Grovo\Api\Client\GrovoApi;
 use Carbon\Carbon;
@@ -41,8 +42,19 @@ class Grovo
         }
     }
 
+    /**
+     * @return Upwebdesign\Grovo\Api\User
+     */
     public function user()
     {
         return new User($this->api);
+    }
+
+    /**
+     * @return Upwebdesign\Grovo\Api\Assignment
+     */
+    public function assignment()
+    {
+        return new Assignment($this->api);
     }
 }
