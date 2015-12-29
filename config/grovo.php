@@ -11,8 +11,8 @@
 return [
     'api' => 'http://api.grovo.com',
     'version' => '1.0',
-    'client_id' => '',
-    'client_secret' => '',
+    'client_id' => env('GROVO_ID'),
+    'client_secret' => env('GROVO_SECRET'),
     'token' => null,
     'debug' => false
 ];
