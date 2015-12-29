@@ -6,7 +6,7 @@ use Upwebdesign\Grovo\GrovoException;
 
 trait Response
 {
-    public function handleRespoonse($response=null)
+    public function handleResponse($response=null)
     {
         if (empty($response)) {
             throw new GrovoException("Invalid Response", 1);
