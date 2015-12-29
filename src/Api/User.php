@@ -8,13 +8,12 @@
  * @package Upwebdesign\Grovo
  */
 use Upwebdesign\Grovo\GrovoException;
-use Upwebdesign\Grovo\Http\GuzzleClient;
 use Upwebdesign\Grovo\Http\HttpException;
 
 /**
 *
 */
-class User extends GuzzleClient
+class User
 {
     /**
      * @var string
@@ -72,7 +71,7 @@ class User extends GuzzleClient
             'type' => 'users',
             'attributes' => $data
         ];
-        return $this->request($endpoint, $data);
+        // return $this->request($endpoint, $data);
     }
 
     /**
@@ -89,7 +88,7 @@ class User extends GuzzleClient
             'type' => 'users',
             'attributes' => $data
         ];
-        return $this->method('PATCH')->request(sprintf('%s/%s', $endpoint, $id), $data);
+        // return $this->method('PATCH')->request(sprintf('%s/%s', $endpoint, $id), $data);
     }
 
     /**
@@ -102,6 +101,6 @@ class User extends GuzzleClient
         if (is_null($id) || ! is_numeric($id)) {
             throw new HttpException('User ID for this request is invalid!', 1);
         }
-        return $this->method('DELETE')->request(sprintf('%s/%s', $endpoint, $id));
+        // return $this->method('DELETE')->request(sprintf('%s/%s', $endpoint, $id));
     }
 }
