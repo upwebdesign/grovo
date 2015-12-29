@@ -21,17 +21,7 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('grovo', function($app) {
-            return new Grovo;
-        });
-
-        $this->app->bind('Upwebdesign\Grovo\Grovo', function($app){
-            return new Grovo;
-        });
-
-        $this->app->bindShared('grovo:token', function ($app) {
-            return new Console\Commands\RequestToken();
-        });
+        $this->registerBindings();
     }
 
     /**
@@ -40,13 +30,29 @@ class GrovoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Publish config files
-        $this->publishes([
-            __DIR__.'/../config/config.php' => config_path('grovo.php')
-        ], 'config');
+        $this->setupConfig();
+    }
 
-        // Register Commands
-        $this->commands('grovo:token');
+    /**
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     * @return void
+     */
+    protected function setupConfig()
+    {
+        $source = realpath(__DIR__.'/../config/grovo.php');
+        $this->publishes([$source => config_path('grovo.php')], 'config');
+    }
+
+    /**
+     * @return void
+     */
+    protected function registerBindings()
+    {
+        $this->app->bind('grovo', function($app) {
+            return new Grovo;
+        });
+
+        $this->app->alias('grovo', Grovo::class);
     }
 
     /**
@@ -56,7 +62,7 @@ class GrovoServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'grovo:token'
+            'grovo'
         ];
     }
 }

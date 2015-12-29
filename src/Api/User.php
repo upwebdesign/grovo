@@ -7,9 +7,8 @@
  * @license MIT
  * @package Upwebdesign\Grovo
  */
-
-use Upwebdesign\Grovo\Http\GuzzleClient;
 use Upwebdesign\Grovo\GrovoException;
+use Upwebdesign\Grovo\Http\GuzzleClient;
 use Upwebdesign\Grovo\Http\HttpException;
 
 /**
@@ -18,23 +17,45 @@ use Upwebdesign\Grovo\Http\HttpException;
 class User extends GuzzleClient
 {
     /**
-     * [$endpoint description]
      * @var string
      */
     protected $endpoint = 'users';
 
     /**
-     * [get description]
-     * @param  [type] $id [description]
-     * @return [type]     [description]
+     * @var object
+     */
+    protected $api;
+
+    /**
+     * @param object $api
+     */
+    public function __construct($api)
+    {
+        $this->api = $api;
+    }
+
+    /**
+     * @param  integer $page
+     * @return array
+     */
+    public function all($page=1)
+    {
+        if (is_null($id) || ! is_numeric($id)) {
+            throw new GrovoException('User ID for this request is invalid!', 1);
+        }
+        return $this->api->getUsers($page);
+    }
+
+    /**
+     * @param  integer $id
+     * @return array
      */
     public function get($id=null)
     {
         if (is_null($id) || ! is_numeric($id)) {
-            throw new HttpException('User ID for this request is invalid!', 1);
+            throw new GrovoException('User ID for this request is invalid!', 1);
         }
-        return 'test';
-        // return $this->request(sprintf('%s/%s', $endpoint, $id));
+        $this->api->showUser($id);
     }
 
     /**
